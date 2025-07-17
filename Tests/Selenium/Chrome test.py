@@ -1,22 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 
-# Optional: Specify path to chromedriver if needed
-# Example: service = Service("C:/path/to/chromedriver.exe")
-service = Service()  # uses default if chromedriver is in PATH
+# Set up Chrome driver
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
-options = Options()
-options.add_argument("--start-maximized")  # Optional: maximize window
-
-# Initialize the Chrome driver
-driver = webdriver.Chrome(service=service, options=options)
-
-# Example: Open Google
+# Open Google
 driver.get("https://www.google.com")
-
-# Do something...
-print(driver.title)
-
-# Close the browser
-driver.quit()
